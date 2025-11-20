@@ -1,15 +1,12 @@
 // Ejercicio 1
 const cambiar = document.querySelector("#cambiar");
 
-if(cambiar)
-{
-    cambiar.addEventListener("click", cambiarTexto);
-}
-
-function cambiarTexto(){
-    document.getElementById("titulo");
-    const titulo = document.querySelector("#titulo");
-    titulo.innerHTML = "DOM modificado"
+if (cambiar) {
+    cambiar.addEventListener("click", () => {
+        document.getElementById("titulo");
+        const titulo = document.querySelector("#titulo");
+        titulo.innerHTML = "DOM modificado"
+    });
 }
 
 // Ejercicio 2
@@ -85,4 +82,80 @@ crear.addEventListener("click", () => {
     tarjeta.appendChild(texto);
     tarjeta.appendChild(btnEliminar);
     contenedor.appendChild(tarjeta);
+});
+
+// Ejercicio 6
+const botonActivar = document.getElementById("activar");
+
+if (botonActivar) {
+    botonActivar.addEventListener("click", () => {
+        const estado = document.getElementById("estado");
+        estado.innerHTML = "Estado: ¡ACTIVO!"
+        estado.style.color = "GREEN"
+    });
+}
+
+// Ejercicio 7
+const botonAlternar = document.getElementById("alternar");
+
+if (botonAlternar) {
+    botonAlternar.addEventListener("click", () => {
+        const cajaApagada = document.querySelector(".caja-apagada");
+        cajaApagada.style.background = "YELLOW";
+        cajaApagada.classList.toggle("caja-encendida");
+        if (cajaApagada.classList.contains("caja-encendida")) {
+            cajaApagada.style.background = "GREY";
+        }
+    });
+}
+
+// Ejercicio 8
+const areaTexto = document.getElementById("areaTexto");
+
+if (areaTexto) {
+    areaTexto.addEventListener("keyup", () => {
+        const conteo = document.getElementById("conteo");
+        conteo.textContent = areaTexto.value.length;
+    });
+}
+
+// Ejercicio 9
+const enlace = document.getElementById("enlace");
+
+if (enlace) {
+    enlace.addEventListener("click", (event) => {
+        event.preventDefault();
+        alert("¡Navegación bloqueada por Javascript!");
+    });
+}
+
+// Ejercicio 10
+const cajaPuntero = document.getElementById("cajaPuntero");
+let fondoPorDefecto = cajaPuntero.style.backgroundColor;
+
+if (cajaPuntero) {
+    cajaPuntero.addEventListener("mouseover", (event) => {
+        event.target.style.backgroundColor = "red";
+    });
+    cajaPuntero.addEventListener("mouseout", (event) => {
+        event.target.style.backgroundColor = fondoPorDefecto;
+    });
+}
+
+// Ejercicio 11
+const abuelo = document.getElementById("abuelo");
+const padre = document.getElementById("padre");
+const hijo = document.getElementById("hijo");
+
+abuelo.addEventListener("click", (event) => {
+    console.log("Clic en el abuelo");
+});
+
+padre.addEventListener("click", (event) => {
+    console.log("Clic en el padre");
+    event.stopPropagation();
+});
+
+hijo.addEventListener("click", (event) => {
+    console.log("Clic en el hijo");
 });
